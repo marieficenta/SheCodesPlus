@@ -50,7 +50,9 @@ ul {
 footer {
   text-align: center;
 }
-
+footer a {
+  color: white;
+}
 .card {
   margin: 0 10px;
 }
