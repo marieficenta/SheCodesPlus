@@ -6,7 +6,7 @@ function formatDate(date) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
   let day = days[date.getDay()];
   let hours = date.getHours();
@@ -30,7 +30,28 @@ function displayWeatherCondition(response) {
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
+  let iconElement = document.querySelector(".icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
+function allowLocation(response) {
+  let currentCity = document.querySelector("#city");
+  currentCity.innerHTML = response.data.name;
+}
+function retrievePosition(position) {
+  let apiKey = "adb83e4d70913c89c01ae1ae9eaf5a39";
+  let lon = position.coords.longitude;
+  let lat = position.coords.latitude;
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  axios.get(url).then(allowLocation);
+}
+
+navigator.geolocation.getCurrentPosition(retrievePosition);
+
+let allowCity = document.querySelector(".allow-button");
+allowCity.addEventListener("click", retrievePosition);
 
 function searchCity(city) {
   let apiKey = "adb83e4d70913c89c01ae1ae9eaf5a39";
@@ -58,6 +79,7 @@ function convertToCelsius(event) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = 22;
 }
+
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
 

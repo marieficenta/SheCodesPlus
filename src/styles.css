@@ -22,10 +22,11 @@ input {
   background-color: rgb(223, 223, 223);
 }
 .search-button {
-  background-color: lightgreen;
+  background-color: lightblue;
 }
 .allow-button {
   background-color: lightblue;
+  color: rgb(104, 104, 104);
 }
 
 i {
@@ -33,6 +34,7 @@ i {
 }
 ul {
   list-style-type: none;
+  text-align: left;
 }
 .current-city {
   background-size: cover;
