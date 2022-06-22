@@ -23,7 +23,7 @@
       <button class="button search-button col-2" type="submit">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
-      <button class="button col-4 allow-button" type="button">
+      <button class="button col-4 " id="allow-button" type="button">
         Allow your location <i class="fa-solid fa-map-pin"></i>
       </button>
     </form>
@@ -31,18 +31,28 @@
       <div class="col-4">
         <img src="http://openweathermap.org/img/wn/10d@2x.png" class="icon" width="100px" padding="30px" />
       </div>
-      <h3 class="col-4" id="city">Kyiv</h3>
+      <ul class="col-4">
+        <h3 id="city"></h3>
+        <li id="description"></li>
+      </ul>
       <ul class="col-4">
         <li id="date"></li>
+
         <li>
-          <p>Temperature: <span id="temperature">26</span>
-            <a href="#" id="celsius-link">°C</a> |
-            <a href="#" id="fahrenheit-link">°F</a>
-          </p>
+          Temperature: <span id="temperature"></span>°C
+
+          <!--|<a href="#" id="celsius-link"></a>
+          <a href="#" id="fahrenheit-link">°F</a>
+          -->
+        </li>
+        <li>Wind Speed: <span id="speed"> </span> Km/H
         </li>
       </ul>
     </div>
-    <div class="days row justify-content-center">
+    <!--
+    
+      
+      <div class="days row justify-content-center">
       <div class="card col-2">
         <ul class="card-body">
           <li>Day</li>
@@ -79,11 +89,11 @@
         </ul>
       </div>
     </div>
-  </div>
-  <footer>
-    <a href="https://github.com/marieficenta/SheCodesPlus">https://github.com/marieficenta/SheCodesPlus</a>
-  </footer>
-  <script src="src/app.js"></script>
+  </div>-->
+    <footer>
+      <a href="https://github.com/marieficenta/SheCodesPlus">https://github.com/marieficenta/SheCodesPlus</a>
+    </footer>
+    <script src="src/app.js"></script>
 </body>
 
 </html>

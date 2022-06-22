@@ -1,7 +1,10 @@
 body {
   background-image: url(media/sky.jpg) !important;
+  background-size: cover;
+  background-color: white;
 }
 .container {
+  width: 50% !important;
   box-shadow: 0px 0px 25px rgba(210, 232, 240, 0.712);
   background: white;
   margin: 150px auto;
@@ -21,6 +24,9 @@ input,
 input {
   background-color: rgb(223, 223, 223);
 }
+#description {
+  text-transform: capitalize;
+}
 .search-button {
   background-color: lightblue;
 }
@@ -28,7 +34,6 @@ input {
   background-color: lightblue;
   color: rgb(104, 104, 104);
 }
-
 i {
   color: red;
 }
@@ -38,8 +43,8 @@ ul {
 }
 .current-city {
   background-size: cover;
-  box-shadow: inset 0 0 0 2000px rgba(192, 220, 252, 0.3);
-  background-image: url(media/blue-sky.jpg);
+  box-shadow: inset 0 0 0 2000px rgba(135, 135, 135, 0.4);
+  /*background-image: url(media/blue-sky.jpg);*/
   border: 2px;
   border-radius: 30px;
   border-color: #c0dcfcce;
@@ -53,7 +58,7 @@ footer {
   text-align: center;
 }
 footer a {
-  color: white;
+  color: rgb(202, 202, 202);
 }
 .card {
   margin: 0 10px;
