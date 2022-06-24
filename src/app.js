@@ -91,8 +91,8 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
-/*let allowCity = document.querySelector("#allow-button");
-allowCity.addEventListener("click", allowPosition);*/
+let allowCity = document.querySelector("#allow-button");
+allowCity.addEventListener("click", allowPosition);
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
