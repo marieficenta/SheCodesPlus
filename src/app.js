@@ -44,18 +44,18 @@ function displayWeatherCondition(response) {
 }
 
 function retrievePosition(position) {
+  allowCity.classList.add("enable");
+  let buttonDesription = document.querySelector("#allow-button");
+  buttonDesription.innerHTML = "Location allowed";
   let apiKey = "adb83e4d70913c89c01ae1ae9eaf5a39";
   let lon = position.coords.longitude;
   let lat = position.coords.latitude;
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(url).then(displayWeatherCondition);
 }
-function allowPosition(event) {
-  let apiKey = "adb83e4d70913c89c01ae1ae9eaf5a39";
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-  axios.get(url).then(displayWeatherCondition);
+function allowPosition() {
+  navigator.geolocation.getCurrentPosition(retrievePosition);
 }
-navigator.geolocation.getCurrentPosition(retrievePosition);
 
 function searchCity(city) {
   let apiKey = "adb83e4d70913c89c01ae1ae9eaf5a39";
@@ -65,6 +65,9 @@ function searchCity(city) {
 
 function handleSubmit(event) {
   event.preventDefault();
+  let buttonDesription = document.querySelector("#allow-button");
+  allowCity.classList.remove("enable");
+  buttonDesription.innerHTML = `Allow your location <i class="fa-solid fa-map-pin"></i>`;
   let city = document.querySelector("#city-input").value;
   searchCity(city);
 }
@@ -95,6 +98,7 @@ celsiusLink.addEventListener("click", convertToCelsius);
 
 let allowCity = document.querySelector("#allow-button");
 allowCity.addEventListener("click", allowPosition);
+
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
