@@ -11,6 +11,7 @@ body {
   padding: 40px 20px;
   border-radius: 30px;
 }
+
 div,
 form {
   margin: 30px 0;
@@ -33,6 +34,11 @@ input {
 .allow-button {
   background-color: lightblue;
   color: rgb(104, 104, 104);
+}
+.active {
+  pointer-events: none;
+  color: black;
+  text-decoration: none;
 }
 i {
   color: red;
