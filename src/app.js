@@ -67,10 +67,10 @@ function handleSubmit(event) {
   let city = document.querySelector("#city-input").value;
   searchCity(city);
 }
-/*function convertToFahrenheit(event) {
+function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  let fahrenheitTemperature = (temperatureElement * 9) / 5 + 32;
+  let fahrenheitTemperature = (temperatureElement.value * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
@@ -86,7 +86,7 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
-let allowCity = document.querySelector("#allow-button");
+/*let allowCity = document.querySelector("#allow-button");
 allowCity.addEventListener("click", allowPosition);*/
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
