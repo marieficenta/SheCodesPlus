@@ -25,6 +25,52 @@ let today = document.querySelector("#date");
 let now = new Date();
 today.innerHTML = formatDate(now);
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecast = response.data.daily;
+
+  let forecastHTML = `<div class="row justify-content-center">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        ` 
+    <div class="card col-2">
+        <ul class="card-body">
+          <li class="weather-forecast-date">${formatDay(forecastDay.dt)}</li>
+          <img src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png" width="50" class="forecast-img" />
+          <li class="weather-forecast-temperatures"><span class="weather-forecast-temperature-min">${Math.round(
+            forecastDay.temp.min
+          )}°C</span> - <span
+              class="weather-forecast-temperature-max">${Math.round(
+                forecastDay.temp.max
+              )}°C</span></li>
+        </ul>
+      </div>
+  `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "adb83e4d70913c89c01ae1ae9eaf5a39";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayWeatherCondition(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#speed").innerHTML = Math.round(
@@ -41,6 +87,7 @@ function displayWeatherCondition(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  getForecast(response.data.coord);
 }
 
 function retrievePosition(position) {
@@ -76,6 +123,7 @@ function convertToFahrenheit(event) {
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   let temperatureElement = document.querySelector("#temperature");
+  
   let fahrenheitTemperature = (temperatureElement.innerHTML * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }

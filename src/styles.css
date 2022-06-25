@@ -2,6 +2,7 @@ body {
   background-image: url(media/sky.jpg) !important;
   background-size: cover;
   background-color: white;
+  font-family: "Poppins", sans-serif !important;
 }
 .container {
   width: 50% !important;
@@ -11,7 +12,10 @@ body {
   padding: 40px 20px;
   border-radius: 30px;
 }
-
+/*#city {
+  text-shadow: 0px 0px 10px rgba(105, 154, 170, 0.676),
+    0px 0px 25px rgb(148, 189, 211);
+}*/
 div,
 form {
   margin: 30px 0;
@@ -24,6 +28,9 @@ input,
 }
 input {
   background-color: rgb(234, 231, 231);
+}
+img {
+  filter: drop-shadow(6px 6px 10px rgba(118, 118, 118, 0.841));
 }
 #description {
   text-transform: capitalize;
@@ -81,4 +88,17 @@ footer a {
 .card-body {
   text-align: center;
   padding: 20px 10px !important;
+}
+.weather-forecast-temperature-min {
+  font-weight: 200;
+}
+#city,
+#date,
+#temperature,
+.temp {
+  font-weight: bolder;
+}
+.allow-button :hover {
+  background-color: rgb(134, 190, 208);
+  opacity: 0.7;
 }
