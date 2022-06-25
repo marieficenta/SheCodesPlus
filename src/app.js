@@ -21,9 +21,6 @@ function formatDate(date) {
   return day + ", " + hours + ":" + minutes;
   /*`${day} ${hours}:${minutes}`;*/
 }
-let today = document.querySelector("#date");
-let now = new Date();
-today.innerHTML = formatDate(now);
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -31,6 +28,7 @@ function formatDay(timestamp) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
+
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
@@ -72,6 +70,15 @@ function getForecast(coordinates) {
 }
 
 function displayWeatherCondition(response) {
+  let today = document.querySelector("#date");
+  let now = new Date();
+  today.innerHTML = formatDate(
+    new Date(
+      now.valueOf() +
+        now.getTimezoneOffset() * 60000 +
+        response.data.timezone * 1000
+    )
+  );
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#speed").innerHTML = Math.round(
     response.data.wind.speed
@@ -123,7 +130,6 @@ function convertToFahrenheit(event) {
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   let temperatureElement = document.querySelector("#temperature");
-  
   let fahrenheitTemperature = (temperatureElement.innerHTML * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }

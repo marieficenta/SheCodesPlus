@@ -98,7 +98,7 @@ footer a {
 .temp {
   font-weight: bolder;
 }
-.allow-button :hover {
-  background-color: rgb(134, 190, 208);
+#allow-button:hover {
+  background-color: rgb(134, 190, 208) !important;
   opacity: 0.7;
 }
